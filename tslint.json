@@ -1,0 +1,27 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "import-name": [
+      true,
+      {
+        "bcryptjs": "bcrypt",
+        "jsonwebtoken": "jwt",
+        "v4": "uuidV4",
+      }
+    ],
+    "no-unused-variable": false,
+    "quotemark": [true, "single", "avoid-escape", "avoid-template"],
+    "variable-name": [true, "allow-pascal-case"],
+    "no-submodule-imports": [
+      true, [
+        "uuid/v4"
+      ]
+    ]
+  },
+  "rulesDirectory": []
+}
