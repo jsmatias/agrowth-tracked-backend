@@ -37,6 +37,7 @@ const initApolloServer = async () => {
     'http://localhost:3000', // localhost access from our dev machines
     'http://localhost:4000', // localhost access from our dev machines
     'http://localhost:5000', // localhost access from our dev machines
+    'https://www.agrowth.app/', // Live main website
     'https://agrowth-tracked.netlify.com', // Netlify's temporary URL
     'https://obscure-dusk-52916.herokuapp.com' // Allow Heroku app to access itself
   ];

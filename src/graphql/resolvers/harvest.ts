@@ -30,10 +30,10 @@ export const createHarvest = async (
     const harvest = new Harvest({
       ...data,
       distributor,
-      uuid,
       location,
       produce,
       supplier,
+      uuid,
       workspace: currentUser.workspace
     });
     await harvest.save().catch(err => {
@@ -42,7 +42,7 @@ export const createHarvest = async (
     });
     return harvest;
   }
-  throw new Error(`Data validation failed.`);
+  throw new Error('Data validation failed.');
 };
 
 /**
@@ -55,7 +55,7 @@ export const createHarvest = async (
  * @returns {(Promise<IHarvestDocument | null>)} a Harvest object if one is found otherwise null.
  */
 export const getHarvest = async ({} = {}, { code }: { code: string } | any = {}): Promise<IHarvestDocument | null> => {
-  const harvest = await Harvest.findOne({ _id: code });
+  const harvest = await Harvest.findOne({ uuid: code });
   // const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'location', 'produce']);
 
   return harvest;
