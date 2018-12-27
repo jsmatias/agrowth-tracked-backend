@@ -1,4 +1,4 @@
-import mongoose, { Model, Types } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import {
   DistributorSchema,
   ICustomDocument,
@@ -7,12 +7,12 @@ import {
   IProduceDocument,
   ISupplierDocument,
   IWorkspaceDocument,
-  LocationSchema,
+  LocationSchema
   // SupplierSchema,
   // ProduceSchema
 } from '.';
-import { ProduceSchema } from './Produce'
-import { SupplierSchema } from './Supplier'
+import { ProduceSchema } from './Produce';
+import { SupplierSchema } from './Supplier';
 // Harvest schema defined
 const HarvestSchema = new mongoose.Schema({
   active: {
@@ -30,8 +30,8 @@ const HarvestSchema = new mongoose.Schema({
     required: 'You must provide a date of emission',
     type: String
   },
-  location: LocationSchema, 
-  produce: ProduceSchema, 
+  location: LocationSchema,
+  produce: ProduceSchema,
   quantity: {
     default: 0,
     required: 'You must supply a quantity of produces',
@@ -45,8 +45,8 @@ const HarvestSchema = new mongoose.Schema({
   uuid: {
     dropDups: true,
     required: 'You must supply a BatchCode/UUID',
-    unique: true,
-    type: String
+    type: String,
+    unique: true
   },
   workspace: {
     ref: 'Workspace',

@@ -6,17 +6,17 @@ export const ProduceSchema = new mongoose.Schema({
     default: true,
     type: Boolean
   },
-  category:{
+  category: {
+    required: false,
+    type: String
+  },
+  classification: {
     required: false,
     type: String
   },
   created: {
     default: Date.now,
     type: Date
-  },
-  classification:{
-    required: false,
-    type: String
   },
   name: {
     required: true,
@@ -30,11 +30,11 @@ export const ProduceSchema = new mongoose.Schema({
     default: Date.now,
     type: Date
   },
-  variety:{
+  variety: {
     required: false,
     type: String
   },
-  weightUnit:{
+  weightUnit: {
     required: false,
     type: String
   },
@@ -64,8 +64,8 @@ export interface IProduceDocument extends ICustomDocument {
   unit: string;
   updated: Date | number;
   workspace: string | IWorkspaceDocument;
-  category: String;
-  classification: String;
-  variety: String;
-  weightUnit: String;
+  category: string;
+  classification: string;
+  variety: string;
+  weightUnit: string;
 }
