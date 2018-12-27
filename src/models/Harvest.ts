@@ -1,4 +1,4 @@
-import mongoose, { Model, Types } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import {
   DistributorSchema,
   ICustomDocument,
@@ -6,9 +6,13 @@ import {
   ILocationDocument,
   IProduceDocument,
   ISupplierDocument,
-  IWorkspaceDocument
+  IWorkspaceDocument,
+  LocationSchema
+  // SupplierSchema,
+  // ProduceSchema
 } from '.';
-
+import { ProduceSchema } from './Produce';
+import { SupplierSchema } from './Supplier';
 // Harvest schema defined
 const HarvestSchema = new mongoose.Schema({
   active: {
@@ -19,38 +23,21 @@ const HarvestSchema = new mongoose.Schema({
     default: Date.now,
     type: Date
   },
-  distributor: [DistributorSchema],
-  // {
-  //   default: '',
-  //   required: 'You must provide a distributor name',
-  //   type: String
-  // },
+  distributor: DistributorSchema,
   // probably we should change it to Date type
   emissionDate: {
     default: String(Date.now),
     required: 'You must provide a date of emission',
     type: String
   },
-  location: {
-    ref: 'Location',
-    required: 'You must supply a location',
-    type: mongoose.Schema.Types.ObjectId
-  },
-  produce: {
-    ref: 'Produce',
-    required: 'You must supply a produce',
-    type: mongoose.Schema.Types.ObjectId
-  },
+  location: LocationSchema,
+  produce: ProduceSchema,
   quantity: {
     default: 0,
     required: 'You must supply a quantity of produces',
     type: Number
   },
-  supplier: {
-    ref: 'Supplier',
-    required: 'You must supply a Supplier',
-    type: mongoose.Schema.Types.ObjectId
-  },
+  supplier: SupplierSchema,
   updated: {
     default: Date.now,
     type: Date
@@ -58,8 +45,8 @@ const HarvestSchema = new mongoose.Schema({
   uuid: {
     dropDups: true,
     required: 'You must supply a BatchCode/UUID',
-    unique: true,
-    type: String
+    type: String,
+    unique: true
   },
   workspace: {
     ref: 'Workspace',
@@ -86,12 +73,12 @@ export interface IHarvestDocument extends ICustomDocument {
   active: boolean;
   created: Date | number;
   // distributor: string;
-  distributor: Types.DocumentArray<IDistributorDocument>;
+  distributor: IDistributorDocument;
   emissionDate: string;
-  location: string | ILocationDocument;
-  produce: string | IProduceDocument;
+  location: ILocationDocument;
+  produce: IProduceDocument;
   quantity: number;
-  supplier: string | ISupplierDocument;
+  supplier: ISupplierDocument;
   updated: Date | number;
   uuid: string;
   workspace: string | IWorkspaceDocument;

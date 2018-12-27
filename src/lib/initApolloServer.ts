@@ -36,7 +36,10 @@ const initApolloServer = async () => {
     'http://10.10.0.8:5000', // Leo's usual IP on his home network, required for testing the site on mobile
     'http://localhost:3000', // localhost access from our dev machines
     'http://localhost:4000', // localhost access from our dev machines
-    'http://localhost:5000' // localhost access from our dev machines
+    'http://localhost:5000', // localhost access from our dev machines
+    'https://www.agrowth.app', // Live main website
+    'https://agrowth-tracked.netlify.com', // Netlify's temporary URL
+    'https://agrowth-api.herokuapp.com' // Allow Heroku app to access itself
   ];
 
   /**
@@ -61,16 +64,6 @@ const initApolloServer = async () => {
           callback(new Error('Not allowed by CORS'));
         }
       }
-    }
-  });
-
-  // Now that all of Apollo's and Express' setup is finished, let's start listening for requests, ie actually start the server
-  await new Promise(resolve => {
-    app.listen({ port: 4000 }, resolve);
-  }).then(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      // tslint:disable-next-line no-console
-      console.log(`🚀  Server ready at http://localhost:4000${server.graphqlPath}`);
     }
   });
 

@@ -6,7 +6,7 @@ const HarvestTypeDef: DocumentNode = gql`
     active: Boolean
     comments: String
     createdAt: String
-    distributor: [Distributor]
+    distributor: Distributor
     emissionDate: String
     id: ID!
     location: Location
