@@ -10,6 +10,10 @@
     "Jean Matias <ibotautomacoes@gmail.com>",
     "Leo Melo <hello@leomeloxp.net>"
   ],
+  "engines": {
+    "node": "11.5.0",
+    "npm": "6.4.1"
+  },
   "license": "unlicensed",
   "private": true,
   "scripts": {
@@ -20,22 +24,10 @@
     "test:watch": "jest --watch",
     "watch": "npm-run-all --parallel build:tsc-watch serve",
     "lint:prettier": "prettier --parser typescript --write \"./src/**/*.ts?(x)\"",
-    "start": "node build/src/index.js"
+    "start": "node build/src/index.js",
+    "postinstall": "tsc"
   },
   "dependencies": {
-    "apollo-server-express": "^2.1.0",
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.4",
-    "graphql": "^0.13.2",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.10",
-    "radix10toradix64": "^0.2.0",
-    "uuid": "^3.3.2"
-  },
-  "devDependencies": {
     "@babel/core": "^7.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.1",
@@ -52,8 +44,22 @@
     "@types/uuid": "^3.4.4",
     "apollo": "^1.7.0",
     "apollo-fetch": "^0.7.0",
+    "apollo-server-express": "^2.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.4",
+    "graphql": "^0.13.2",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.10",
+    "radix10toradix64": "^0.2.0",
+    "typescript": "^3.0.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
     "jest": "^23.5.0",
     "mongodb-memory-server": "^2.2.0",
     "nodemon": "^1.18.3",
@@ -62,7 +68,6 @@
     "ts-jest": "^23.10.1",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.10.0",
-    "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.0.1"
+    "tslint-config-prettier": "^1.15.0"
   }
 }
