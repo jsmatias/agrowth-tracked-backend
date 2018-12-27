@@ -1,7 +1,7 @@
 import mongoose, { Model, Types } from 'mongoose';
 import { ICustomDocument, ILocationDocument, IPurchaseDocument, IWorkspaceDocument, PurchaseSchema } from '.';
 
-const SupplierSchema = new mongoose.Schema({
+export const SupplierSchema = new mongoose.Schema({
   active: {
     default: true,
     type: Boolean

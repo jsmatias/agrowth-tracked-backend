@@ -6,7 +6,9 @@ import {
   ILocationDocument,
   IProduceDocument,
   ISupplierDocument,
-  IWorkspaceDocument
+  IWorkspaceDocument,
+  LocationSchema,
+  // ProduceSchema
 } from '.';
 
 // Harvest schema defined
@@ -31,12 +33,15 @@ const HarvestSchema = new mongoose.Schema({
     required: 'You must provide a date of emission',
     type: String
   },
-  location: {
-    ref: 'Location',
-    required: 'You must supply a location',
-    type: mongoose.Schema.Types.ObjectId
-  },
-  produce: {
+  location: LocationSchema, 
+  // {
+  //   ref: 'Location',
+  //   required: 'You must supply a location',
+  //   type: mongoose.Schema.Types.ObjectId
+  // },
+  produce: 
+  // ProduceSchema, 
+  {
     ref: 'Produce',
     required: 'You must supply a produce',
     type: mongoose.Schema.Types.ObjectId
@@ -46,7 +51,8 @@ const HarvestSchema = new mongoose.Schema({
     required: 'You must supply a quantity of produces',
     type: Number
   },
-  supplier: {
+  supplier: 
+  {
     ref: 'Supplier',
     required: 'You must supply a Supplier',
     type: mongoose.Schema.Types.ObjectId
@@ -88,7 +94,7 @@ export interface IHarvestDocument extends ICustomDocument {
   // distributor: string;
   distributor: Types.DocumentArray<IDistributorDocument>;
   emissionDate: string;
-  location: string | ILocationDocument;
+  location: ILocationDocument;
   produce: string | IProduceDocument;
   quantity: number;
   supplier: string | ISupplierDocument;

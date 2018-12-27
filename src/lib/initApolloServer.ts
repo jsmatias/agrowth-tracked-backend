@@ -36,7 +36,8 @@ const initApolloServer = async () => {
     'http://10.10.0.8:5000', // Leo's usual IP on his home network, required for testing the site on mobile
     'http://localhost:3000', // localhost access from our dev machines
     'http://localhost:4000', // localhost access from our dev machines
-    'http://localhost:5000' // localhost access from our dev machines
+    'http://localhost:5000', // localhost access from our dev machines
+    'https://agrowth-tracked.netlify.com' // Netlify's temporary URL
   ];
 
   /**

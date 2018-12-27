@@ -30,8 +30,8 @@ export const createHarvest = async (
     const harvest = new Harvest({
       ...data,
       uuid,
-      location: location._id,
-      produce: produce._id,
+      location,
+      produce,
       supplier: supplier._id,
       workspace: currentUser.workspace
     });
@@ -56,7 +56,8 @@ export const createHarvest = async (
  * @returns {(Promise<IHarvestDocument | null>)} a Harvest object if one is found otherwise null.
  */
 export const getHarvest = async ({} = {}, { code }: { code: string } | any = {}): Promise<IHarvestDocument | null> => {
-  const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'location', 'produce']);
+  const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'produce']);
+  // const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'location', 'produce']);
 
   return harvest;
 };
@@ -69,5 +70,6 @@ export const harvestList = async (
   if (!currentUser || !currentUser.workspace) {
     throw new Error('No logged in user identified');
   }
-  return Harvest.find({ workspace: currentUser.workspace }).populate(['supplier', 'location', 'produce']);
+  return Harvest.find({ workspace: currentUser.workspace }).populate(['supplier', 'produce']);
+  // return Harvest.find({ workspace: currentUser.workspace }).populate(['supplier', 'location', 'produce']);
 };

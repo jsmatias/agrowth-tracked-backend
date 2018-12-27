@@ -9,6 +9,10 @@ export interface IProduceDocument extends ICustomDocument {
   unit: string;
   updated: Date | number;
   workspace: string | IWorkspaceDocument;
+  category: String;
+  classification: String;
+  variety: String;
+  weightUnit: String;
 }
 
 export const ProduceSchema = new mongoose.Schema({
@@ -16,9 +20,15 @@ export const ProduceSchema = new mongoose.Schema({
     default: true,
     type: Boolean
   },
+  category:{
+    type: String
+  },
   created: {
     default: Date.now,
     type: Date
+  },
+  classification:{
+    type: String
   },
   name: {
     required: true,
@@ -31,6 +41,12 @@ export const ProduceSchema = new mongoose.Schema({
   updated: {
     default: Date.now,
     type: Date
+  },
+  variety:{
+    type: String
+  },
+  weightUnit:{
+    type: String
   },
   workspace: {
     ref: 'Workspace',

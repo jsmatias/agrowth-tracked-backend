@@ -91,4 +91,8 @@ export interface IProduceUpdateInput {
   name: string;
   unit: string;
   comments: string;
+  category: String;
+  classification: String;
+  variety: String;
+  weightUnit: String;
 }
