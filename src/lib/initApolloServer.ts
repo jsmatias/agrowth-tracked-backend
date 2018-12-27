@@ -65,16 +65,6 @@ const initApolloServer = async () => {
     }
   });
 
-  // Now that all of Apollo's and Express' setup is finished, let's start listening for requests, ie actually start the server
-  await new Promise(resolve => {
-    app.listen({ port: 4000 }, resolve);
-  }).then(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      // tslint:disable-next-line no-console
-      console.log(`🚀  Server ready at http://localhost:4000${server.graphqlPath}`);
-    }
-  });
-
   /**
    * Not totally sure this is at all needed but leaving it here for now
    * @todo potentially remove this
