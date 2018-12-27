@@ -29,14 +29,13 @@ export const createHarvest = async (
   if (supplier && location && produce && distributor) {
     const harvest = new Harvest({
       ...data,
+      distributor,
       uuid,
       location,
       produce,
-      supplier: supplier._id,
+      supplier,
       workspace: currentUser.workspace
     });
-    // push the distributor as an embedded doc
-    harvest.distributor.push(distributor);
     await harvest.save().catch(err => {
       // tslint:disable-next-line:no-console
       console.error(err.message);
@@ -56,7 +55,7 @@ export const createHarvest = async (
  * @returns {(Promise<IHarvestDocument | null>)} a Harvest object if one is found otherwise null.
  */
 export const getHarvest = async ({} = {}, { code }: { code: string } | any = {}): Promise<IHarvestDocument | null> => {
-  const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'produce']);
+  const harvest = await Harvest.findOne({ _id: code });
   // const harvest = await Harvest.findOne({ _id: code }).populate(['supplier', 'location', 'produce']);
 
   return harvest;
@@ -70,6 +69,6 @@ export const harvestList = async (
   if (!currentUser || !currentUser.workspace) {
     throw new Error('No logged in user identified');
   }
-  return Harvest.find({ workspace: currentUser.workspace }).populate(['supplier', 'produce']);
+  return Harvest.find({ workspace: currentUser.workspace });
   // return Harvest.find({ workspace: currentUser.workspace }).populate(['supplier', 'location', 'produce']);
 };

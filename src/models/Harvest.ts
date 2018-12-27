@@ -8,9 +8,11 @@ import {
   ISupplierDocument,
   IWorkspaceDocument,
   LocationSchema,
+  // SupplierSchema,
   // ProduceSchema
 } from '.';
-
+import { ProduceSchema } from './Produce'
+import { SupplierSchema } from './Supplier'
 // Harvest schema defined
 const HarvestSchema = new mongoose.Schema({
   active: {
@@ -21,12 +23,7 @@ const HarvestSchema = new mongoose.Schema({
     default: Date.now,
     type: Date
   },
-  distributor: [DistributorSchema],
-  // {
-  //   default: '',
-  //   required: 'You must provide a distributor name',
-  //   type: String
-  // },
+  distributor: DistributorSchema,
   // probably we should change it to Date type
   emissionDate: {
     default: String(Date.now),
@@ -34,29 +31,13 @@ const HarvestSchema = new mongoose.Schema({
     type: String
   },
   location: LocationSchema, 
-  // {
-  //   ref: 'Location',
-  //   required: 'You must supply a location',
-  //   type: mongoose.Schema.Types.ObjectId
-  // },
-  produce: 
-  // ProduceSchema, 
-  {
-    ref: 'Produce',
-    required: 'You must supply a produce',
-    type: mongoose.Schema.Types.ObjectId
-  },
+  produce: ProduceSchema, 
   quantity: {
     default: 0,
     required: 'You must supply a quantity of produces',
     type: Number
   },
-  supplier: 
-  {
-    ref: 'Supplier',
-    required: 'You must supply a Supplier',
-    type: mongoose.Schema.Types.ObjectId
-  },
+  supplier: SupplierSchema,
   updated: {
     default: Date.now,
     type: Date
@@ -92,12 +73,12 @@ export interface IHarvestDocument extends ICustomDocument {
   active: boolean;
   created: Date | number;
   // distributor: string;
-  distributor: Types.DocumentArray<IDistributorDocument>;
+  distributor: IDistributorDocument;
   emissionDate: string;
   location: ILocationDocument;
-  produce: string | IProduceDocument;
+  produce: IProduceDocument;
   quantity: number;
-  supplier: string | ISupplierDocument;
+  supplier: ISupplierDocument;
   updated: Date | number;
   uuid: string;
   workspace: string | IWorkspaceDocument;

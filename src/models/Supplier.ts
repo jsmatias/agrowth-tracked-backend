@@ -1,5 +1,5 @@
-import mongoose, { Model, Types } from 'mongoose';
-import { ICustomDocument, ILocationDocument, IPurchaseDocument, IWorkspaceDocument, PurchaseSchema } from '.';
+import mongoose, { Model } from 'mongoose';
+import { ICustomDocument, ILocationDocument, IWorkspaceDocument } from '.';
 
 export const SupplierSchema = new mongoose.Schema({
   active: {
@@ -30,7 +30,7 @@ export const SupplierSchema = new mongoose.Schema({
     required: false,
     type: String
   },
-  purchase: [PurchaseSchema],
+  // purchase: [PurchaseSchema],
   surname: {
     required: "Insert supplier's last name!",
     type: String
@@ -77,6 +77,6 @@ export interface ISupplierDocument extends ICustomDocument {
   surname: string;
   updated: Date | number;
   // locations: Types.DocumentArray<ILocationDocument>;
-  purchase: Types.DocumentArray<IPurchaseDocument>;
+  // purchase: Types.DocumentArray<IPurchaseDocument>;
   workspace: string | IWorkspaceDocument;
 }
