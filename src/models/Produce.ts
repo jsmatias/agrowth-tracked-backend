@@ -1,20 +1,18 @@
 import mongoose, { Model } from 'mongoose';
-import { ICustomDocument, IWorkspaceDocument } from './index';
-
-export interface IProduceDocument extends ICustomDocument {
-  active: boolean;
-  created: Date | number;
-  id: string;
-  name: string;
-  unit: string;
-  updated: Date | number;
-  workspace: string | IWorkspaceDocument;
-}
+import { ICustomDocument, IWorkspaceDocument } from '.';
 
 export const ProduceSchema = new mongoose.Schema({
   active: {
     default: true,
     type: Boolean
+  },
+  category: {
+    required: false,
+    type: String
+  },
+  classification: {
+    required: false,
+    type: String
   },
   created: {
     default: Date.now,
@@ -31,6 +29,14 @@ export const ProduceSchema = new mongoose.Schema({
   updated: {
     default: Date.now,
     type: Date
+  },
+  variety: {
+    required: false,
+    type: String
+  },
+  weightUnit: {
+    required: false,
+    type: String
   },
   workspace: {
     ref: 'Workspace',
@@ -49,3 +55,17 @@ ProduceSchema.pre<IProduceDocument>('save', function preSave(next): void {
 const Produce: Model<IProduceDocument> = mongoose.model('Produce', ProduceSchema);
 
 export { Produce };
+
+export interface IProduceDocument extends ICustomDocument {
+  active: boolean;
+  created: Date | number;
+  id: string;
+  name: string;
+  unit: string;
+  updated: Date | number;
+  workspace: string | IWorkspaceDocument;
+  category: string;
+  classification: string;
+  variety: string;
+  weightUnit: string;
+}
