@@ -6,14 +6,14 @@ export const ProduceSchema = new mongoose.Schema({
     default: true,
     type: Boolean
   },
-  category: {
-    required: false,
-    type: String
-  },
-  classification: {
-    required: false,
-    type: String
-  },
+  // category: {
+  //   required: false,
+  //   type: String
+  // },
+  // classification: {
+  //   required: false,
+  //   type: String
+  // },
   created: {
     default: Date.now,
     type: Date
@@ -22,10 +22,10 @@ export const ProduceSchema = new mongoose.Schema({
     required: true,
     type: String
   },
-  unit: {
-    required: true,
-    type: String
-  },
+  // unit: {
+  //   required: true,
+  //   type: String
+  // },
   updated: {
     default: Date.now,
     type: Date
@@ -34,10 +34,10 @@ export const ProduceSchema = new mongoose.Schema({
     required: false,
     type: String
   },
-  weightUnit: {
-    required: false,
-    type: String
-  },
+  // weightUnit: {
+  //   required: false,
+  //   type: String
+  // },
   workspace: {
     ref: 'Workspace',
     required: 'You must supply a Workspace!',
@@ -61,11 +61,11 @@ export interface IProduceDocument extends ICustomDocument {
   created: Date | number;
   id: string;
   name: string;
-  unit: string;
+  // unit: string;
   updated: Date | number;
   workspace: string | IWorkspaceDocument;
-  category: string;
-  classification: string;
+  // category: string;
+  // classification: string;
   variety: string;
-  weightUnit: string;
+  // weightUnit: string;
 }

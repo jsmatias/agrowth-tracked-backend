@@ -89,10 +89,10 @@ export const produceList = async (
 export interface IProduceUpdateInput {
   active: boolean;
   name: string;
-  unit: string;
+  // unit: string;
   comments: string;
-  category: String;
-  classification: String;
-  variety: String;
-  weightUnit: String;
+  // category: String;
+  // classification: String;
+  variety: string;
+  // weightUnit: String;
 }

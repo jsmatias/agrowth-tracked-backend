@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
-import distributor from './distributor';
 import { DocumentNode } from 'graphql';
+import distributor from './distributor';
 import harvest from './harvest';
 import location from './location';
 import produce from './produce';

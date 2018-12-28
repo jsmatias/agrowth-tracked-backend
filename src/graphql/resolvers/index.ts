@@ -40,11 +40,11 @@ export default {
   },
 
   Query: {
+    distributorList,
     getCurrentUser,
     getHarvest,
     getSupplier,
     getWorkspaceMetaInfo,
-    distributorList,
     harvestList,
     produceList,
     supplierList
