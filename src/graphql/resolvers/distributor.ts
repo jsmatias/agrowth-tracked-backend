@@ -1,5 +1,5 @@
 import { IApolloCustomContext } from '../../lib/generateContext';
-import { IDistributorDocument, Distributor } from '../../models';
+import { Distributor, IDistributorDocument } from '../../models';
 import { createUserInWorkspace } from './user';
 
 /**
@@ -87,38 +87,3 @@ Promise<IDistributorDocument[]> => {
     .where('active')
     .equals(true);
 };
-
-// getDistributor returns one distributor from its id
-// export const getDistributor = async (
-//     {} = {},
-//     { id }: any,
-//     { currentUser }: IApolloCustomContext,
-//     info: any
-//   ) : Promise<IDistributorDocument | null> => {
-//     if (!currentUser || !currentUser.workspace) {
-//       throw new Error('No logged in user identified');
-//     }
-//   /*
-//    * Determines whether an extra DB query will be required to return the locations for the distributors being queried
-//    * using the Query information variable passed through to the resolver.
-//    */
-//   const needsLocations =
-//     info.fieldNodes.filter((node: any) =>
-//       node.selectionSet.selections.some((selection: any) => selection.name.value === 'locations')
-//     ).length > 0;
-//   let distributor: IDistributorDocument | null;
-//   if (needsLocations) {
-//     // Must populate the locations virtual if we want to have access to the objects it holds
-//     distributor = await Distributor.findOne({ _id: id, workspace: currentUser.workspace })
-//       .where('active')
-//       .equals(true)
-//       .populate('locations');
-//   } else {
-//     distributor = await Distributor.findOne({ _id: id, workspace: currentUser.workspace })
-//       .where('active')
-//       .equals(true);
-//   }
-
-//   // console.log({info, needsLocations})
-//   return distributor;
-// };

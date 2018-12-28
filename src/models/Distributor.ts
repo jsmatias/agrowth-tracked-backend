@@ -18,6 +18,10 @@ export const DistributorSchema = new mongoose.Schema({
     required: 'Insert a valid document ID!',
     type: String
   },
+  idType: {
+    required: 'Insert a valid document ID type!',
+    type: String
+  },
   name: {
     required: "Insert distributor's first name!",
     type: String
@@ -69,6 +73,7 @@ export interface IDistributorDocument extends ICustomDocument {
   email: string;
   id: string;
   idNumber: string;
+  idType: string;
   name: string;
   nickname: string;
   phoneNumber: string;
