@@ -13,6 +13,7 @@ const supplierTypeDef: DocumentNode = gql`
     surname: String
     nickname: String
     idNumber: String
+    idType: String
     phoneNumber: String
     comments: String
   }
@@ -24,6 +25,7 @@ const supplierTypeDef: DocumentNode = gql`
     surname: String
     nickname: String
     idNumber: String
+    idType: String
     phoneNumber: String
     comments: String
   }

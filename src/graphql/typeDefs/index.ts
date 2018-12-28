@@ -38,6 +38,9 @@ const coreTypeDefs: DocumentNode = gql`
     createLocationForSupplier(id: ID, data: LocationUpdateInput): Location
     createSupplier(data: SupplierUpdateInput): Supplier
     updateLocationForSupplier(supplierId: ID!, locationId: ID!, data: LocationUpdateInput): Location
+    """
+    Allows for editing information about the current supplier.
+    """
     updateSupplier(data: SupplierUpdateInput!, id: ID!): Supplier
     # Produce
     archiveProduce(id: ID!): SuccessMessage

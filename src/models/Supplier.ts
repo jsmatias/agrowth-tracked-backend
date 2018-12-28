@@ -18,12 +18,17 @@ export const SupplierSchema = new mongoose.Schema({
     required: 'Insert a valid document ID!',
     type: String
   },
+  idType: {
+    required: 'You must supply a valid document ID type!',
+    type: String
+  },
   name: {
     required: "Insert supplier's first name!",
     type: String
   },
+  // nickname or company name
   nickname: {
-    required: false,
+    required: "You must supply the producer's nickname or his company's name!",
     type: String
   },
   phoneNumber: {
@@ -48,9 +53,9 @@ export const SupplierSchema = new mongoose.Schema({
 
 // find locations where the supplier _id property === location supplier property
 SupplierSchema.virtual('locations', {
-  ref: 'Location', // what model to link?
+  foreignField: 'supplier', // which field on the review?
   localField: '_id', // which field on the store?
-  foreignField: 'supplier' // which field on the review?
+  ref: 'Location' // what model to link?
 });
 
 SupplierSchema.pre<ISupplierDocument>('save', function preSave(next): void {
@@ -70,6 +75,7 @@ export interface ISupplierDocument extends ICustomDocument {
   email: string;
   id: string;
   idNumber: string;
+  idType: string;
   locations: (string | ILocationDocument)[];
   name: string;
   nickname: string;
